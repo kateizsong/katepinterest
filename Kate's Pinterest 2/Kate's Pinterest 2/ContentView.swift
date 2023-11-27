@@ -16,16 +16,26 @@ struct ContentView: View {
             FolderListView(selectedFolderIndex: $selectedFolderIndex, folders: viewModel.folders)
 
             ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 10) {
+                let columns = [
+                    GridItem(.flexible(), spacing: 0),
+                    GridItem(.flexible(), spacing: 0)
+                ]
+
+                LazyVGrid(columns: columns, spacing: -100
+) {
                     ForEach(viewModel.folders[selectedFolderIndex].posts, id: \.title) { post in
                         PostView(post: post)
                     }
-                    .padding()
                 }
+                .padding([.horizontal, .bottom],1)
             }
         }
     }
 }
+
+
+
+
 
 
 #Preview {

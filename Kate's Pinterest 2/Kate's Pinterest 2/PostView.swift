@@ -11,19 +11,36 @@ struct PostView: View {
     var post: Post
 
     var body: some View {
-        VStack {
-            Text(post.title)
-                .font(.headline)
-            
+        VStack(alignment: .leading, spacing: 4) {
             Image(post.imageURL)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 150, height: 100)
+                .scaledToFill()
+                .frame(maxWidth: .infinity)
+                .aspectRatio(contentMode: .fit)
+                .clipped()
+                .cornerRadius(10)
+
+            
+            Text(post.title)
+                .font(.subheadline)
+                .bold()
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+
+        
+            Text(post.source)
+                .font(.subheadline)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+                .offset(y: -4)
         }
-        .padding()
-        .background(Color.gray)
-        .cornerRadius(10)
-        .padding(.bottom, 10)
+        .background(Color.clear)
+        .padding(8)
     }
 }
+
+
+
+
 
