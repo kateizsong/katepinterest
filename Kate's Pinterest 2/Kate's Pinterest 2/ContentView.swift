@@ -13,6 +13,8 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Spacer()
+
             FolderListView(selectedFolderIndex: $selectedFolderIndex, folders: viewModel.folders)
 
             ScrollView {
@@ -21,16 +23,18 @@ struct ContentView: View {
                     GridItem(.flexible(), spacing: 0)
                 ]
 
-                LazyVGrid(columns: columns, spacing: -100
-) {
+                LazyVGrid(columns: columns, spacing: -100) {
                     ForEach(viewModel.folders[selectedFolderIndex].posts, id: \.title) { post in
                         PostView(post: post)
                     }
                 }
-                .padding([.horizontal, .bottom],1)
+                .padding([.horizontal, .bottom], 1)
             }
+
+            Spacer() 
         }
     }
+
 }
 
 

@@ -35,8 +35,8 @@ struct PostView: View {
                     .font(.subheadline)
                     .bold()
                     .multilineTextAlignment(.leading)
-                    .lineLimit(1) // Limit the title to one line
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .lineLimit(1) 
+                    .frame(maxWidth: 145, alignment: .leading)
             }
 
   
@@ -47,6 +47,7 @@ struct PostView: View {
                     .onTapGesture {
                         isMenuVisible.toggle()
                     }
+                    .offset(y: -10)
             }
             .padding(.trailing, 8)
 

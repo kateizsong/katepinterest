@@ -22,15 +22,14 @@ struct FolderListView: View {
                         Text(folders[index].name)
                             .foregroundColor(.primary)
                             .font(.headline)
+                            .padding(10) 
+                            .underline(selectedFolderIndex == index)
                     }
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 10)
+                    Spacer()
                 }
-                Spacer()
             }
         }
         .padding(.top, 8)
+        .frame(maxWidth: .infinity)
     }
 }
-
-
