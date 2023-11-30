@@ -22,7 +22,7 @@ struct FolderListView: View {
                         Text(folders[index].name)
                             .foregroundColor(.primary)
                             .font(.headline)
-                            .padding(10) 
+                            .padding(20)
                             .underline(selectedFolderIndex == index)
                     }
                     Spacer()

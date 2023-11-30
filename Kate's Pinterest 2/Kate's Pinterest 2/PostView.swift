@@ -31,7 +31,7 @@ struct PostView: View {
                 }
 
             HStack {
-                Text(truncateTitle(post.title))
+                Text(shortenTitle(post.title))
                     .font(.subheadline)
                     .bold()
                     .multilineTextAlignment(.leading)
@@ -100,11 +100,10 @@ struct PostView: View {
                 }
             }
             .padding()
-            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 2)
         }
     }
 
-    private func truncateTitle(_ title: String) -> String {
+    private func shortenTitle(_ title: String) -> String {
         return title.count > maxTitleLength ? "\(title.prefix(maxTitleLength))..." : title
     }
 }
