@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FolderListView: View {
-    @Binding var selectedFolderIndex: Int
+    @Binding var selectedFolder: Int
     var folders: [Folder]
 
     var body: some View {
@@ -17,13 +17,13 @@ struct FolderListView: View {
                 Spacer()
                 ForEach(0..<folders.count) { index in
                     Button(action: {
-                        selectedFolderIndex = index
+                        selectedFolder = index
                     }) {
                         Text(folders[index].name)
                             .foregroundColor(.primary)
                             .font(.headline)
                             .padding(20)
-                            .underline(selectedFolderIndex == index)
+                            .underline(selectedFolder == index)
                     }
                     Spacer()
                 }

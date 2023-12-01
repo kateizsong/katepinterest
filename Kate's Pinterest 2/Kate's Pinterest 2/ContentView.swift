@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = ContentViewModel()
-    @State private var selectedFolderIndex = 0
+    @State private var selectedFolder = 0
 
     var body: some View {
         VStack {
             Spacer()
 
-            FolderListView(selectedFolderIndex: $selectedFolderIndex, folders: viewModel.folders)
+            FolderListView(selectedFolder: $selectedFolder, folders: viewModel.folders)
 
             ScrollView {
                 let columns = [
@@ -24,7 +24,7 @@ struct ContentView: View {
                 ]
 
                 LazyVGrid(columns: columns, spacing: -100) {
-                    ForEach(viewModel.folders[selectedFolderIndex].posts, id: \.title) { post in
+                    ForEach(viewModel.folders[selectedFolder].posts, id: \.title) { post in
                         PostView(post: post)
                     }
                 }
@@ -33,13 +33,14 @@ struct ContentView: View {
 
             Spacer()
 
-            // Menu Bar
+      
             HStack {
                 Spacer()
                 Image(systemName: "house.fill")
                     .resizable()
                     .frame(width: 30, height: 25)
                     .foregroundColor(.gray)
+                // make it go to the "all" page 
                 Spacer()
                 Image(systemName: "magnifyingglass")
                     .resizable()
